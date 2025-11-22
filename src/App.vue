@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FooterComponent from './components/FooterComponent.vue'
+import NavbarComponent from './components/NavbarComponent.vue'
+</script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world, with Firebase!</h1>
+  <NavbarComponent />
+  <RouterView />
+  <FooterComponent />
 </template>
 
 <style scoped></style>
