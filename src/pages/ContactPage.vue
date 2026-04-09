@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { db, addDoc, collection } from '../firebase'
+import { db } from '@/firebase'
+import { addDoc, collection } from 'firebase/firestore'
 
 const name = ref('')
 const email = ref('')
@@ -20,7 +21,6 @@ async function sendMessage() {
     success.value = true
     name.value = email.value = message.value = ''
 
-    // Hide success message after 5 seconds
     setTimeout(() => {
       success.value = false
     }, 5000)
@@ -49,6 +49,7 @@ async function sendMessage() {
         </p>
       </div>
 
+      <!-- Content -->
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Contact Form -->
         <article
@@ -111,16 +112,16 @@ async function sendMessage() {
               <span v-if="!isSubmitting" class="flex items-center justify-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  class="size-6"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                   />
                 </svg>
                 Send Message
@@ -152,33 +153,42 @@ async function sendMessage() {
           </form>
 
           <!-- Success Message -->
-          <div
-            v-if="success"
-            class="mt-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-600 rounded-lg flex items-center gap-3 animate-fade-in"
+          <Transition
+            enter-active-class="transition-all duration-300 ease-out"
+            enter-from-class="opacity-0 translate-y-2"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition-all duration-200 ease-in"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 translate-y-2"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-green-600 dark:text-green-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+            <div
+              v-if="success"
+              class="mt-6 p-4 bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-600 rounded-lg flex items-center gap-3"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <p class="text-green-800 dark:text-green-300 font-medium">
-              Message sent successfully! I'll get back to you soon.
-            </p>
-          </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-green-600 dark:text-green-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <p class="text-green-800 dark:text-green-300 font-medium">
+                Message sent successfully! I'll get back to you soon.
+              </p>
+            </div>
+          </Transition>
         </article>
 
         <!-- Contact Information -->
         <div class="space-y-6">
-          <!-- Contact Details Card -->
+          <!-- Details Card -->
           <article
             class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition duration-300"
           >
@@ -255,7 +265,7 @@ async function sendMessage() {
               <!-- Location -->
               <div class="flex items-start gap-4">
                 <div
-                  class="w-12 h-12 bg-linear-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-centershrink-0"
+                  class="w-12 h-12 bg-linear-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -333,20 +343,3 @@ async function sendMessage() {
     </div>
   </main>
 </template>
-
-<style scoped>
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
-</style>

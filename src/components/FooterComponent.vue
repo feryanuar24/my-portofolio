@@ -3,17 +3,18 @@
     class="bg-linear-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white py-12 px-6 transition-colors duration-300"
   >
     <div class="max-w-6xl mx-auto">
-      <!-- Footer Content -->
+      <!-- Content -->
       <div class="grid md:grid-cols-3 gap-8 mb-8">
-        <!-- Brand -->
+        <!-- Title -->
         <div>
           <h3
             class="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-purple-400 mb-4"
           >
-            Fery Anuar
+            Fery Anuar Ramadhan Putra
           </h3>
-          <p class="text-gray-400">
-            Fullstack Web & Mobile Developer passionate about creating innovative digital solutions.
+          <p class="text-justify text-gray-400 text-sm">
+            Passionate about technology, software development, and continuous learning. Always eager
+            to take on new challenges and contribute to impactful projects.
           </p>
         </div>
 

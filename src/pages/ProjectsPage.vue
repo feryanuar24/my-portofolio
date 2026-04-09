@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { db, collection, getDocs } from '../firebase'
+import { db } from '@/firebase'
+import { collection, getDocs } from 'firebase/firestore'
 
 interface Project {
   id: string
@@ -11,9 +12,10 @@ interface Project {
 }
 
 const projects = ref<Project[]>([])
-const loading = ref(true)
+const loading = ref(false)
 
 onMounted(async () => {
+  loading.value = true
   try {
     const querySnapshot = await getDocs(collection(db, 'projects'))
     projects.value = querySnapshot.docs.map((doc) => ({
@@ -36,7 +38,7 @@ onMounted(async () => {
       <!-- Header -->
       <div class="text-center mb-16">
         <h1
-          class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
+          class="h-16 text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
         >
           My Projects
         </h1>
@@ -154,13 +156,3 @@ onMounted(async () => {
     </div>
   </main>
 </template>
-
-<style scoped>
-.line-clamp-3 {
-  display: -webkit-box;
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>

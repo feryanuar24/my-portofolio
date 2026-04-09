@@ -6,11 +6,13 @@ const isVisible = ref(false)
 onMounted(() => {
   setTimeout(() => {
     isVisible.value = true
-  }, 100)
+  }, 300)
 })
 
 const name = ref('Fery Anuar Ramadhan Putra')
+
 const address = ref('Bogor, West Java, Indonesia')
+
 const contacts = ref({
   phone: '+62838-1347-9771',
   email: 'feryanuar24@gmail.com',
@@ -20,62 +22,38 @@ const contacts = ref({
 })
 
 const summary = ref(
-  'Fullstack Web & Mobile Developer experienced in building large-scale Laravel and React.js-based applications for government and public needs. Accustomed to handling the entire development cycle from requirements analysis, database design, feature implementation, debugging, to security implementation and documentation. Highly adaptable to new code styles and technologies, including utilization of template admins such as Metronic and KTUI to accelerate the development process efficiently and consistently. Optimized performance, reliability, and user experience.',
+  'I am a Software Engineer with experience in developing web, mobile, and desktop applications. I am skilled at handling a variety of projects with flexibility, effective and measurable time management, and I stay up-to-date with the latest advancements in modern technology. I also have experience managing projects from start to finish, including DevOps processes such as deployment, CI/CD, and cloud infrastructure management.',
 )
 
 const skills = ref({
-  frontEnd: [
+  web: [
+    'Laravel',
     'React.js',
     'Vue.js',
-    'Inertia.js',
+    'Svelte',
+    'Livewire',
+    'Bootstrap CSS',
     'Tailwind CSS',
-    'Blade',
-    'HTML5',
-    'CSS3',
-    'JavaScript (ES6+)',
-    'Admin Templates (Metronic, KT-UI)',
+    'Admin Templates',
   ],
-  backEnd: [
-    'PHP (Laravel, CodeIgniter)',
-    'Go (Gin)',
-    'Node.js (Express.js)',
-    'RESTful API',
-    'Authentication & Authorization',
-    'Query Optimization',
-    'System Design',
-    'Application Security',
-    'Deployment',
-    'Caching',
-  ],
-  database: ['MySQL', 'PostgreSQL', 'Firebase Realtime Database / Firestore'],
-  mobile: ['React Native', 'Flutter'],
-  versionControl: ['Git', 'GitLab'],
-  otherTools: [
-    'Docker (Basic)',
-    'Postman',
-    'Figma',
-    'API Documentation (Swagger / OpenAPI)',
-    'Project & Task Management Tools (Asana, Jira, Trello)',
-  ],
-  softSkills: [
-    'Problem Solving',
-    'Analytical Thinking',
-    'Creative Thinking',
-    'Team Collaboration',
-    'Communication',
-  ],
+  mobile: ['React Native', 'Flutter', 'Kotlin (Jetpack)'],
+  desktop: ['.NET (C#)', 'Electron.js', 'Flutter Desktop'],
+  db: ['MySQL', 'PostgreSQL', 'SQLite', 'MongoDB', 'Redis'],
+  api: ['Laravel API', 'Express.js', 'Gin', 'Flask', 'Spring Boot', '.NET Core'],
+  infra: ['AWS (EC2, S3, RDS)', 'Docker', 'Kubernetes', 'CI/CD (GitHub Actions, GitLab CI)'],
+  vsc: ['Git', 'GitHub', 'GitLab'],
 })
 
 const experiences = ref([
   {
-    position: 'Web Developer',
+    position: 'Software Engineer',
     company:
       'Diskominfo Karawang (Department of Communication and Information Technology of Karawang Regency)',
     duration: 'October 2024 - Now',
     responsibilities: [
-      'Developed and maintained various Laravel and CodeIgniter-based applications with complex business processes and standardized encryption and security practices.',
-      'Served as a Fullstack Developer on various large-scale projects, including: Web Queue, MPP Queue, Bappenda CSR, InfoLoker, SIM IP ASN (Professionalism Index Assessment), Pesona Karawang, SiMantra (Satpol PP Task Management), Tangkar (Reporting Application), Tangkas (Health Office Application), as well as various OPD website templates such as diskominfo.karawangkab.go.id, dinkes.karawangkab.go.id, and others.',
-      'Implemented refactoring and caching that improved application performance based on internal testing results.',
+      'Developed and maintained various web applications with complex business processes and standardized encryption and security practices.',
+      'Managing a wide range of projects, both internal and external, including: Antrian & MPP, Bappenda CSR, InfoLoker, SIM IP ASN (Professionalism Index Assessment), Pesona Karawang, SiMantra (Satpol PP Task Management), Tangkar (Reporting Application), Tangkas (Health Office Application), as well as various organization websites (company profile) such as diskominfo, dinkes, and others. Also developed a ticketing application for UMKM bazaar events, a stock opname application for disaster relief aid, a management application for KORPRI, and a gateway API application for TTE (digital signature integration).',
+      'Implemented refactoring and caching that improved application performance.',
       'Redesigned the website to be more modern and focused on visual appearance, especially on public sites such as Pesona Karawang (tourism website). In addition, implemented GeoJSON with Leaflet for mapping and data grouping needs.',
       'Performed systematic error handling & logging to maintain the stability of production applications.',
       'Implemented security standards as recommended by the Coding Team and followed up on findings from Bug Hunter to ensure applications remained secure and up-to-date.',
@@ -84,26 +62,26 @@ const experiences = ref([
     ],
   },
   {
-    position: 'Research & Development (R&D) Engineer',
+    position: 'R&D Engineer',
     company: 'Universitas Singaperbangsa Karawang',
     duration: 'January 2024 - April 2024',
     responsibilities: [
       'Develop a web-based decision support system for water quality evaluation.',
       'Backend using Laravel and frontend using React.js with Fuzzy Tsukamoto method for water quality calculation.',
-      'Displaying calculation results in real-time and interactive visuals.',
+      'Using actual field data, ensuring that the final outcomes accurately reflect real-world conditions.',
       'The research results were published in the SINTA 4 journal.',
     ],
   },
   {
     position: 'Frontend Developer',
     company: 'PDDikti (Ministry of Education, Culture, Research, and Technology of Indonesia)',
-    duration: 'September 2023 - December 2024',
+    duration: 'Agust 2023 - December 2023',
     responsibilities: [
       'Developed new version of PDDikti and Helpdesk system using React.js and TailwindCSS, including UI/UX improvements and component modularization.',
       'Implemented Elasticsearch for quick search feature, improving data access efficiency and user experience.',
       'Maintained and updated backend API documentation, including writing endpoints, parameters, and integration process flows.',
       'Perform testing and validation on the AI Question feature, ensuring accurate results that meet user needs.',
-      'Collaborate in cross-divisional teams (Frontend, Backend, QA, and Operations) using Agile Sprint methodology, and utilize Asana and GitHub for task management and version control.',
+      'Collaborate in cross-divisional teams (Ops, Backend, UI/UX, Data Analyst, Data Science, QA) using Agile Sprint methodology, and utilize Asana and GitHub for task management and version control.',
       'Contribute to technical discussions, feature requirements formulation, and cross-system issue resolution during the development process.',
     ],
   },
@@ -139,10 +117,10 @@ const education = ref({
   institution: 'Universitas Singaperbangsa Karawang',
   duration: '2020 - 2024',
   focus: [
-    'analysis and design of information systems',
-    'web and mobile application development',
-    'database management',
-    'decision support system',
+    'Analysis and Design of Information Systems',
+    'Web and Mobile Application Development',
+    'Database Management',
+    'Decision Support System',
   ],
 })
 
@@ -150,7 +128,7 @@ const certifications = ref([
   {
     title: 'Fullstack Web Development',
     issuer: 'Kelas Fullstack',
-    link: 'https://drive.google.com/file/d/1j4ENY3Sl7vngFaife__yIqLQ33cv4V0A/view?usp=sharing',
+    link: 'https://codepolitan.com/c/6LXMNZC',
   },
   {
     title: 'MSIB Batch 5 (Frontend Developer Intern)',
@@ -158,24 +136,24 @@ const certifications = ref([
     link: 'https://drive.google.com/file/d/105-8fdslH-dWVe_KX_AqC9Bw9LdWgXqe/view?usp=sharing',
   },
   {
-    title: 'Frontend Engineering Batch 3',
+    title: 'Frontend Engineering (MSIB Batch 3)',
     issuer: 'Ruangguru CAMP (Bootcamp for Software Engineers)',
     link: 'https://drive.google.com/file/d/1JuzGz_dSrwBLkrTnDQjNVYUo_cnwSX_s/view?usp=sharing',
   },
   {
     title: 'AWS Jobreadiness',
-    issuer: 'Orbit Skill',
+    issuer: 'Orbit Future Academy',
     link: 'https://drive.google.com/file/d/1w2kcLrL1BlG9LgRMT5SLKNAYs1-eNdpb/view?usp=sharing',
   },
   {
     title: 'Flutter Mobile Apps Corse Level Advanced',
     issuer: 'ITBOX by Course-Net',
-    link: 'https://drive.google.com/file/d/13fLo95I639XoW8KTez7j5Qr6Ow2ZzGTt/view?usp=sharing',
+    link: 'https://itbox.id/certificate-verifier/13EF95781-13F18C724-12D36FB21',
   },
   {
     title: 'Web & App Development',
-    issuer: 'Orbit Skill',
-    link: 'https://drive.google.com/file/d/10bqdoz213Rksohsnb4ca3qWUvw_hszuv/view?usp=sharing',
+    issuer: 'MySkill',
+    link: 'https://storage.googleapis.com/myskill-v2-certificates/learning-path-vJocQEQMxLW90zJtToaN/GJv2SGNY1LV3s2xuDlV477HlQP33-yiRkV4mCN79rivcB5epn.pdf',
   },
 ])
 
@@ -209,8 +187,8 @@ const projects = ref([
 
 const additional = ref([
   'Ready to work onsite and full-time, with high commitment to targets and work quality.',
-  'Familiar with using Git Workflow, conducting code reviews, and collaborating with cross-divisional teams (FE, BE, QA, DevOps, UI/UX).',
-  'Quickly adapt to new technologies, especially in the field of Web & Mobile Development.',
+  'Familiar with using Git Workflow, conducting code reviews, and collaborating with cross-divisional teams (Ops, Backend, UI/UX, Data Analyst, Data Science, QA).',
+  'Quickly adapt to new technologies, especially in the field of Web, Desktop, & Mobile Development.',
   'Highly enthusiastic in learning, proactive, and result-oriented with continuous improvement.',
   'Uphold clean code standards, clean documentation, and modern development practices.',
 ])
@@ -221,145 +199,158 @@ const additional = ref([
     class="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
   >
     <!-- Hero Section -->
-    <section
-      class="relative overflow-hidden py-20 px-6 md:px-10"
-      :class="{ 'animate-fade-in-up': isVisible }"
+    <Transition
+      appear
+      enter-active-class="transition-all duration-700 ease-out"
+      enter-from-class="opacity-0 translate-y-8"
+      enter-to-class="opacity-100 translate-y-0"
     >
-      <!-- Animated Background Elements -->
-      <div
-        class="absolute top-0 left-0 w-72 h-72 bg-blue-300 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob"
-      ></div>
-      <div
-        class="absolute top-0 right-0 w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000"
-      ></div>
-      <div
-        class="absolute bottom-0 left-20 w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-4000"
-      ></div>
+      <section v-if="isVisible" class="relative overflow-hidden py-20 px-6 md:px-10">
+        <!-- Background -->
+        <div
+          class="absolute top-0 left-0 w-72 h-72 bg-blue-300 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-pulse"
+        ></div>
+        <div
+          class="absolute top-0 right-0 w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-pulse [animation-delay:2s]"
+        ></div>
+        <div
+          class="absolute bottom-0 left-20 w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-pulse [animation-delay:4s]"
+        ></div>
 
-      <div class="relative max-w-6xl mx-auto">
-        <!-- Profile Image -->
-        <div class="flex justify-center mb-8">
-          <div class="relative group">
-            <div
-              class="absolute -inset-1 bg-linear-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"
-            ></div>
-            <img
-              src="/images/avatars/profile.jpg"
-              alt="Foto Profil"
-              class="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl transform group-hover:scale-105 transition duration-300"
-            />
+        <!-- Content -->
+        <div class="relative max-w-6xl mx-auto">
+          <!-- Profile Image -->
+          <div class="flex justify-center mb-8">
+            <div class="relative group">
+              <div
+                class="absolute -inset-1 bg-linear-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"
+              ></div>
+              <img
+                src="/images/avatars/profile.jpg"
+                alt="Foto Profil"
+                class="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl transform group-hover:scale-105 transition duration-300"
+              />
+            </div>
+          </div>
+
+          <!-- Name and Address -->
+          <Transition
+            appear
+            enter-active-class="transition-opacity duration-700 delay-200 ease-out"
+            enter-from-class="opacity-0"
+            enter-to-class="opacity-100"
+          >
+            <h1
+              v-if="isVisible"
+              class="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
+            >
+              {{ name }}
+            </h1>
+          </Transition>
+          <p
+            class="text-center text-gray-600 dark:text-gray-300 text-lg md:text-xl mb-8 flex items-center justify-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            {{ address }}
+          </p>
+
+          <!-- Contact Section -->
+          <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <a
+              :href="`tel:${contacts.phone}`"
+              class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-blue-600 dark:text-blue-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                />
+              </svg>
+              <span
+                class="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition"
+                >{{ contacts.phone }}</span
+              >
+            </a>
+
+            <a
+              :href="`mailto:${contacts.email}`"
+              class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-red-600 dark:text-red-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              <span
+                class="text-gray-700 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition"
+                >{{ contacts.email }}</span
+              >
+            </a>
+
+            <a
+              :href="contacts.linkedin"
+              target="_blank"
+              class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-blue-700 dark:text-blue-400"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+              <span
+                class="text-gray-700 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition"
+                >LinkedIn</span
+              >
+            </a>
+
+            <a
+              :href="contacts.github"
+              target="_blank"
+              class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-gray-800 dark:text-gray-300"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+              <span
+                class="text-gray-700 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition"
+                >GitHub</span
+              >
+            </a>
           </div>
         </div>
-
-        <!-- Name and Address -->
-        <h1
-          class="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4 animate-fade-in"
-        >
-          {{ name }}
-        </h1>
-        <p
-          class="text-center text-gray-600 dark:text-gray-300 text-lg md:text-xl mb-8 flex items-center justify-center gap-2"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          {{ address }}
-        </p>
-
-        <!-- Contact Section -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
-          <a
-            :href="`tel:${contacts.phone}`"
-            class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-blue-600 dark:text-blue-400"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-              />
-            </svg>
-            <span
-              class="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition"
-              >{{ contacts.phone }}</span
-            >
-          </a>
-
-          <a
-            :href="`mailto:${contacts.email}`"
-            class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-red-600 dark:text-red-400"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-            <span
-              class="text-gray-700 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition"
-              >{{ contacts.email }}</span
-            >
-          </a>
-
-          <a
-            :href="contacts.linkedin"
-            target="_blank"
-            class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-blue-700 dark:text-blue-400"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-              />
-            </svg>
-            <span
-              class="text-gray-700 dark:text-gray-300 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition"
-              >LinkedIn</span
-            >
-          </a>
-
-          <a
-            :href="contacts.github"
-            target="_blank"
-            class="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-gray-800 dark:text-gray-300"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              />
-            </svg>
-            <span
-              class="text-gray-700 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition"
-              >GitHub</span
-            >
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </Transition>
 
     <!-- Professional Summary -->
     <section class="py-16 px-6 md:px-10">
@@ -367,13 +358,15 @@ const additional = ref([
         <div
           class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 transform hover:scale-[1.02] transition duration-300"
         >
-          <h2
-            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
-          >
-            <span class="w-2 h-10 bg-linear-to-b from-blue-600 to-purple-600 rounded-full"></span>
-            Professional Summary
-          </h2>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{{ summary }}</p>
+          <article>
+            <h2
+              class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3"
+            >
+              <span class="w-2 h-10 bg-linear-to-b from-blue-600 to-purple-600 rounded-full"></span>
+              Professional Summary
+            </h2>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">{{ summary }}</p>
+          </article>
         </div>
       </div>
     </section>
@@ -386,7 +379,7 @@ const additional = ref([
         </h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Front End -->
+          <!-- Web Development -->
           <article
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
           >
@@ -396,24 +389,24 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
+                  strokeWidth="{1.5}"
                   stroke="currentColor"
+                  class="size-6 text-white"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                   />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Front End</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Web Development</h3>
             </div>
             <ul class="space-y-2">
               <li
-                v-for="skill in skills.frontEnd"
+                v-for="skill in skills.web"
                 :key="skill"
                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
               >
@@ -423,7 +416,7 @@ const additional = ref([
             </ul>
           </article>
 
-          <!-- Back End -->
+          <!-- Mobile Development -->
           <article
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
           >
@@ -433,28 +426,65 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  class="size-6 text-white"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
                   />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Back End</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mobile Development</h3>
             </div>
             <ul class="space-y-2">
               <li
-                v-for="skill in skills.backEnd"
+                v-for="skill in skills.mobile"
                 :key="skill"
                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
               >
                 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                {{ skill }}
+              </li>
+            </ul>
+          </article>
+
+          <!-- Desktop Development -->
+          <article
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6 text-white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Desktop Development</h3>
+            </div>
+            <ul class="space-y-2">
+              <li
+                v-for="skill in skills.desktop"
+                :key="skill"
+                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+              >
+                <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
                 {{ skill }}
               </li>
             </ul>
@@ -466,20 +496,20 @@ const additional = ref([
           >
             <div class="flex items-center gap-3 mb-4">
               <div
-                class="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center"
+                class="w-12 h-12 bg-linear-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  class="size-6 text-white"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                    d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
                   />
                 </svg>
               </div>
@@ -487,44 +517,7 @@ const additional = ref([
             </div>
             <ul class="space-y-2">
               <li
-                v-for="skill in skills.database"
-                :key="skill"
-                class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
-              >
-                <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                {{ skill }}
-              </li>
-            </ul>
-          </article>
-
-          <!-- Mobile -->
-          <article
-            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
-          >
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-12 h-12 bg-linear-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mobile</h3>
-            </div>
-            <ul class="space-y-2">
-              <li
-                v-for="skill in skills.mobile"
+                v-for="skill in skills.db"
                 :key="skill"
                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
               >
@@ -534,7 +527,7 @@ const additional = ref([
             </ul>
           </article>
 
-          <!-- Version Control -->
+          <!-- API Design -->
           <article
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
           >
@@ -544,24 +537,24 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  class="size-6 text-white"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z"
                   />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Version Control</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">API Design</h3>
             </div>
             <ul class="space-y-2">
               <li
-                v-for="skill in skills.versionControl"
+                v-for="skill in skills.api"
                 :key="skill"
                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
               >
@@ -571,7 +564,7 @@ const additional = ref([
             </ul>
           </article>
 
-          <!-- Other Tools -->
+          <!-- Infrastructure -->
           <article
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300"
           >
@@ -581,7 +574,7 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
+                  class="size-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -590,15 +583,15 @@ const additional = ref([
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                    d="M3 15a4 4 0 004 4h10a4 4 0 100-8 5.5 5.5 0 00-10.9 1.5"
                   />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Other Tools</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Infrastructure</h3>
             </div>
             <ul class="space-y-2">
               <li
-                v-for="skill in skills.otherTools"
+                v-for="skill in skills.infra"
                 :key="skill"
                 class="flex items-center gap-2 text-gray-700 dark:text-gray-300"
               >
@@ -608,7 +601,7 @@ const additional = ref([
             </ul>
           </article>
 
-          <!-- Soft Skills - Full Width -->
+          <!-- Version Control -->
           <article
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 md:col-span-2 lg:col-span-3"
           >
@@ -618,7 +611,7 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
+                  class="size-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -627,15 +620,15 @@ const additional = ref([
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    d="M6 3v12a3 3 0 003 3h6m-9-3a3 3 0 100-6 3 3 0 000 6zm9 3a3 3 0 100-6 3 3 0 000 6z"
                   />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Soft Skills</h3>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">Version Controls</h3>
             </div>
             <div class="flex flex-wrap gap-3">
               <span
-                v-for="skill in skills.softSkills"
+                v-for="skill in skills.vsc"
                 :key="skill"
                 class="px-4 py-2 bg-linear-to-r from-pink-100 to-rose-100 dark:from-pink-900/30 dark:to-rose-900/30 text-pink-800 dark:text-pink-300 rounded-full text-sm font-medium"
               >
@@ -697,7 +690,7 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-green-500 shrink-0 mt-0.5"
+                  class="size-6 text-green-500 shrink-0 mt-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -796,7 +789,7 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
+                  class="size-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -859,7 +852,7 @@ const additional = ref([
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
+                  class="size-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -889,7 +882,9 @@ const additional = ref([
           Additional Information
         </h2>
 
-        <div class="bg-linear-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12">
+        <article
+          class="bg-linear-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12"
+        >
           <ul class="space-y-4">
             <li
               v-for="(info, index) in additional"
@@ -898,7 +893,7 @@ const additional = ref([
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 shrink-0 mt-1"
+                class="size-6 shrink-0 mt-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -913,7 +908,7 @@ const additional = ref([
               <span>{{ info }}</span>
             </li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -945,60 +940,3 @@ const additional = ref([
     </section>
   </main>
 </template>
-
-<style scoped>
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out;
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-</style>

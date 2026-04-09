@@ -3,16 +3,18 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { doc, getDoc } from 'firebase/firestore'
 import type { DocumentData } from 'firebase/firestore'
-import { db } from '../firebase'
+import { db } from '@/firebase'
 
 const route = useRoute()
 const router = useRouter()
 
 const project = ref<DocumentData | null>(null)
-const loading = ref(true)
+const loading = ref(false)
 const selectedImage = ref<string | null>(null)
 
-const loadProject = async () => {
+onMounted(async () => {
+  loading.value = true
+
   const id = route.params.id as string | undefined
   if (!id) {
     project.value = null
@@ -35,10 +37,6 @@ const loadProject = async () => {
   } finally {
     loading.value = false
   }
-}
-
-onMounted(() => {
-  loadProject()
 })
 
 function openLightbox(image: string) {
@@ -149,7 +147,7 @@ function closeLightbox() {
             />
             <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent">
               <div class="absolute bottom-8 left-8 right-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
+                <h1 class="text-2xl md:text-5xl font-bold text-white mb-2">
                   {{ project.title }}
                 </h1>
               </div>
@@ -158,7 +156,7 @@ function closeLightbox() {
 
           <!-- Project Description -->
           <div class="p-8 md:p-12">
-            <div class="flex items-start gap-4 mb-6">
+            <div class="flex md:flex-row flex-col items-start gap-4 mb-6">
               <div
                 class="w-12 h-12 bg-linear-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center shrink-0"
               >
@@ -181,9 +179,10 @@ function closeLightbox() {
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   About This Project
                 </h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  {{ project.description }}
-                </p>
+                <div
+                  class="text-gray-700 dark:text-gray-300 leading-relaxed text-justify text-base md:text-lg"
+                  v-html="project.description"
+                ></div>
               </div>
             </div>
           </div>
@@ -225,7 +224,7 @@ function closeLightbox() {
             >
               <img
                 :src="img"
-                :alt="`Screenshot ${index + 1}`"
+                :alt="`Screenshot ${(index as number) + 1}`"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 loading="lazy"
               />
@@ -255,51 +254,45 @@ function closeLightbox() {
     </div>
 
     <!-- Lightbox -->
-    <div
-      v-if="selectedImage"
-      @click="closeLightbox"
-      class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-in"
+    <Transition
+      enter-active-class="transition-all duration-300 ease-out"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition-all duration-200 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
     >
-      <button
-        @click.stop="closeLightbox"
-        class="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300"
+      <div
+        v-if="selectedImage"
+        @click="closeLightbox"
+        class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <button
+          @click.stop="closeLightbox"
+          class="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition duration-300"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <img
-        :src="selectedImage"
-        @click.stop
-        class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-        alt="Full size screenshot"
-      />
-    </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <img
+          :src="selectedImage"
+          @click.stop
+          class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+          alt="Full size screenshot"
+        />
+      </div>
+    </Transition>
   </main>
 </template>
-
-<style scoped>
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
-</style>
