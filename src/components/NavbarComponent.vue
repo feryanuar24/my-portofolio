@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useThemeStore } from '@/stores/theme'
 
-const isDark = ref(false)
+const themeStore = useThemeStore()
+const { isDark } = storeToRefs(themeStore)
+const { setDarkMode } = themeStore
+
 const isMobileMenuOpen = ref(false)
 
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-  isDark.value = savedTheme === 'dark' || (!savedTheme && prefersDark)
+  setDarkMode(savedTheme === 'dark' || (!savedTheme && prefersDark))
 
   if (isDark.value) {
     document.documentElement.classList.add('dark')
@@ -16,7 +21,7 @@ onMounted(() => {
 })
 
 function toggleDarkMode() {
-  isDark.value = !isDark.value
+  setDarkMode(!isDark.value)
 
   if (isDark.value) {
     document.documentElement.classList.add('dark')
