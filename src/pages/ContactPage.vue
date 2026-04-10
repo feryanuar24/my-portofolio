@@ -2,6 +2,9 @@
 import { ref } from 'vue'
 import { db } from '@/firebase'
 import { addDoc, collection } from 'firebase/firestore'
+import { useProfileStore } from '@/stores/profile'
+
+const profileStore = useProfileStore()
 
 const name = ref('')
 const email = ref('')
@@ -223,10 +226,10 @@ async function sendMessage() {
                 <div>
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
                   <a
-                    href="mailto:feryanuar24@gmail.com"
+                    :href="`mailto:${profileStore.profile.email}`"
                     class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
                   >
-                    feryanuar24@gmail.com
+                    {{ profileStore.profile.email }}
                   </a>
                 </div>
               </div>
@@ -254,10 +257,10 @@ async function sendMessage() {
                 <div>
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Phone</h3>
                   <a
-                    href="tel:+6283813479771"
+                    :href="`tel:${profileStore.profile.phone}`"
                     class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
                   >
-                    +62838-1347-9771
+                    {{ profileStore.profile.phone }}
                   </a>
                 </div>
               </div>
@@ -290,7 +293,13 @@ async function sendMessage() {
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Location</h3>
-                  <p class="text-gray-600 dark:text-gray-400">Bogor, West Java, Indonesia</p>
+                  <a
+                    :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profileStore.profile.address)}`"
+                    target="_blank"
+                    class="hover:text-blue-600 dark:hover:text-blue-400 text-gray-600 dark:text-gray-400 transition delay-150 duration-300 ease-in-out"
+                  >
+                    {{ profileStore.profile.address }}
+                  </a>
                 </div>
               </div>
             </div>
@@ -305,7 +314,7 @@ async function sendMessage() {
 
             <div class="flex gap-4">
               <a
-                href="https://www.linkedin.com/in/fery-anuar/"
+                :href="profileStore.profile.linkedin"
                 target="_blank"
                 class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110"
               >
@@ -321,7 +330,7 @@ async function sendMessage() {
                 </svg>
               </a>
               <a
-                href="https://github.com/feryanuar24"
+                :href="profileStore.profile.github"
                 target="_blank"
                 class="w-12 h-12 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110"
               >

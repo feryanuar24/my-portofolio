@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useProfileStore } from '@/stores/profile'
+
+const profileStore = useProfileStore()
+</script>
+
 <template>
   <footer
     class="bg-linear-to-r from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white py-12 px-6 transition-colors duration-300"
@@ -10,12 +16,14 @@
           <h3
             class="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-400 to-purple-400 mb-4"
           >
-            Fery Anuar Ramadhan Putra
+            {{ profileStore.profile.name }}
           </h3>
-          <p class="text-justify text-gray-400 text-sm">
-            Passionate about technology, software development, and continuous learning. Always eager
-            to take on new challenges and contribute to impactful projects.
-          </p>
+          <a
+            href="#summary"
+            class="hover:text-blue-400 transition delay-150 duration-300 ease-in-out hover:dark:text-blue-400 text-justify text-gray-400 text-sm line-clamp-3"
+          >
+            {{ profileStore.profile.summary }}
+          </a>
         </div>
 
         <!-- Quick Links -->
@@ -51,7 +59,7 @@
           <h4 class="text-lg font-semibold mb-4">Connect With Me</h4>
           <div class="flex gap-4">
             <a
-              href="https://www.linkedin.com/in/fery-anuar/"
+              :href="profileStore.profile.linkedin"
               target="_blank"
               class="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110"
             >
@@ -67,7 +75,7 @@
               </svg>
             </a>
             <a
-              href="https://github.com/feryanuar24"
+              :href="profileStore.profile.github"
               target="_blank"
               class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110"
             >
@@ -83,7 +91,7 @@
               </svg>
             </a>
             <a
-              href="mailto:feryanuar24@gmail.com"
+              :href="`mailto:${profileStore.profile.email}`"
               class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-lg flex items-center justify-center transition duration-300 transform hover:scale-110"
             >
               <svg
@@ -108,7 +116,8 @@
       <!-- Copyright -->
       <div class="border-t border-gray-800 pt-8 text-center">
         <p class="text-gray-400">
-          &copy; {{ new Date().getFullYear() }} Fery Anuar Ramadhan Putra. All rights reserved.
+          &copy; {{ new Date().getFullYear() }} {{ profileStore.profile.name }}. All rights
+          reserved.
         </p>
       </div>
     </div>
