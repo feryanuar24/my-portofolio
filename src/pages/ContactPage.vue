@@ -66,10 +66,14 @@ async function sendMessage() {
           <form @submit.prevent="sendMessage" class="space-y-6">
             <!-- Name Input -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label
+                for="contact-name"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                 Your Name
               </label>
               <input
+                id="contact-name"
                 v-model="name"
                 type="text"
                 class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
@@ -80,10 +84,14 @@ async function sendMessage() {
 
             <!-- Email Input -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label
+                for="contact-email"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                 Email Address
               </label>
               <input
+                id="contact-email"
                 v-model="email"
                 type="email"
                 class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
@@ -94,10 +102,14 @@ async function sendMessage() {
 
             <!-- Message Textarea -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label
+                for="contact-message"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
                 Your Message
               </label>
               <textarea
+                id="contact-message"
                 v-model="message"
                 rows="5"
                 class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 resize-none"

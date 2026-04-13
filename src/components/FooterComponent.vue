@@ -18,12 +18,12 @@ const profileStore = useProfileStore()
           >
             {{ profileStore.profile.name }}
           </h3>
-          <a
-            href="#summary"
+          <RouterLink
+            :to="{ path: '/', hash: '#summary' }"
             class="hover:text-blue-400 transition delay-150 duration-300 ease-in-out hover:dark:text-blue-400 text-justify text-gray-400 text-sm line-clamp-3"
           >
             {{ profileStore.profile.summary }}
-          </a>
+          </RouterLink>
         </div>
 
         <!-- Quick Links -->

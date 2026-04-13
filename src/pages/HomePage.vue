@@ -60,7 +60,7 @@ onMounted(() => {
           >
             <h1
               v-if="isVisible"
-              class="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
+              class="h-20 text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mb-4"
             >
               {{ profileStore.profile.name }}
             </h1>
