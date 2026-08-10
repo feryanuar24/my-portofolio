@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useProfileStore } from '@/stores/profile'
+import FaceComponent from '@/components/FaceComponent.vue'
 
 const profileStore = useProfileStore()
 const isVisible = ref(false)
@@ -37,18 +38,9 @@ onMounted(() => {
 
         <!-- Content -->
         <div class="relative max-w-6xl mx-auto">
-          <!-- Profile Image -->
+          <!-- Profile Avatar -->
           <div class="flex justify-center mb-8">
-            <div class="relative group">
-              <div
-                class="absolute -inset-1 bg-linear-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"
-              ></div>
-              <img
-                src="/images/avatars/profile.jpg"
-                alt="Foto Profil"
-                class="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-2xl transform group-hover:scale-105 transition duration-300"
-              />
-            </div>
+            <FaceComponent />
           </div>
 
           <!-- Name and Address -->
