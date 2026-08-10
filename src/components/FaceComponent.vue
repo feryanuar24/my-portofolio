@@ -25,14 +25,17 @@ const props = defineProps({
   backgroundColor: { type: String, default: 'transparent' },
 })
 
-const containerRef = ref(null)
+const containerRef = ref<HTMLElement | null>(null)
 const status = ref('loading')
 
-let scene, camera, renderer, resizeObserver
-let model = null
-let headBone = null
-let neckBone = null
-let animationId = null
+let scene: THREE.Scene,
+  camera: THREE.PerspectiveCamera,
+  renderer: THREE.WebGLRenderer,
+  resizeObserver: ResizeObserver | null = null
+let model: THREE.Group | null = null
+let headBone: THREE.Bone | null = null
+let neckBone: THREE.Bone | null = null
+let animationId: number | null = null
 
 let targetYaw = 0
 let targetPitch = 0
@@ -40,21 +43,21 @@ let currentYaw = 0
 let currentPitch = 0
 let baseYaw = 0
 
-function degToRad(d) {
+function degToRad(d: number) {
   return (d * Math.PI) / 180
 }
 
-function findBone(root, pattern) {
-  let found = null
+function findBone(root: THREE.Object3D, pattern: RegExp): THREE.Bone | null {
+  let found: THREE.Bone | null = null
   root.traverse((obj) => {
-    if (!found && obj.isBone && pattern.test(obj.name)) {
+    if (!found && obj instanceof THREE.Bone && pattern.test(obj.name)) {
       found = obj
     }
   })
   return found
 }
 
-function frameModel(object3d) {
+function frameModel(object3d: THREE.Object3D) {
   const box = new THREE.Box3().setFromObject(object3d)
   const size = box.getSize(new THREE.Vector3())
   const center = box.getCenter(new THREE.Vector3())
@@ -74,8 +77,8 @@ function frameModel(object3d) {
   camera.updateProjectionMatrix()
 }
 
-function updateTargetFromPointer(clientX, clientY) {
-  let nx, ny
+function updateTargetFromPointer(clientX: number, clientY: number) {
+  let nx: number, ny: number
   if (props.trackTarget === 'element' && containerRef.value) {
     const rect = containerRef.value.getBoundingClientRect()
     nx = ((clientX - rect.left) / rect.width) * 2 - 1
@@ -91,7 +94,7 @@ function updateTargetFromPointer(clientX, clientY) {
   targetPitch = -ny * degToRad(props.maxPitch)
 }
 
-function onPointerMove(e) {
+function onPointerMove(e: PointerEvent) {
   updateTargetFromPointer(e.clientX, e.clientY)
 }
 
@@ -102,8 +105,11 @@ function onPointerLeaveWindow() {
 
 function initThree() {
   const el = containerRef.value
-  const width = el.clientWidth || 1
-  const height = el.clientHeight || 1
+
+  if (!el) return
+
+  const width = el?.clientWidth || 1
+  const height = el?.clientHeight || 1
 
   scene = new THREE.Scene()
 
@@ -119,7 +125,7 @@ function initThree() {
   } else {
     renderer.setClearColor(0x000000, 0)
   }
-  el.appendChild(renderer.domElement)
+  el?.appendChild(renderer.domElement)
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.7))
   const key = new THREE.DirectionalLight(0xffffff, 1.4)
@@ -201,12 +207,16 @@ function animate() {
 function disposeScene() {
   if (!scene) return
   scene.traverse((obj) => {
-    if (obj.geometry) obj.geometry.dispose()
-    if (obj.material) {
-      const materials = Array.isArray(obj.material) ? obj.material : [obj.material]
+    if (obj instanceof THREE.Mesh && obj.geometry) {
+      obj.geometry.dispose()
+    }
+    if (obj instanceof THREE.Material) {
+      const materials = Array.isArray(obj) ? obj : [obj]
       materials.forEach((m) => {
         Object.values(m).forEach((v) => {
-          if (v && v.isTexture) v.dispose()
+          if (v && v instanceof THREE.Texture) {
+            v.dispose()
+          }
         })
         m.dispose()
       })
@@ -219,7 +229,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  cancelAnimationFrame(animationId)
+  cancelAnimationFrame(animationId || 0)
   window.removeEventListener('pointermove', onPointerMove)
   window.removeEventListener('pointerleave', onPointerLeaveWindow)
   if (resizeObserver) resizeObserver.disconnect()
