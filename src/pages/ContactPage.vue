@@ -1,40 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import { db } from '@/firebase'
-import { addDoc, collection } from 'firebase/firestore'
-import { useProfileStore } from '@/stores/profile'
-
-const profileStore = useProfileStore()
-
-const name = ref('')
-const email = ref('')
-const message = ref('')
-const success = ref(false)
-const isSubmitting = ref(false)
-
-async function sendMessage() {
-  isSubmitting.value = true
-  try {
-    await addDoc(collection(db, 'messages'), {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-      created_at: new Date(),
-    })
-    success.value = true
-    name.value = email.value = message.value = ''
-
-    setTimeout(() => {
-      success.value = false
-    }, 5000)
-  } catch (error) {
-    console.error('Error sending message:', error)
-  } finally {
-    isSubmitting.value = false
-  }
-}
-</script>
-
 <template>
   <main
     class="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-20 px-6 transition-colors duration-300"
@@ -364,3 +327,40 @@ async function sendMessage() {
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { db } from '@/firebase'
+import { addDoc, collection } from 'firebase/firestore'
+import { useProfileStore } from '@/stores/profile'
+
+const profileStore = useProfileStore()
+
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const success = ref(false)
+const isSubmitting = ref(false)
+
+async function sendMessage() {
+  isSubmitting.value = true
+  try {
+    await addDoc(collection(db, 'messages'), {
+      name: name.value,
+      email: email.value,
+      message: message.value,
+      created_at: new Date(),
+    })
+    success.value = true
+    name.value = email.value = message.value = ''
+
+    setTimeout(() => {
+      success.value = false
+    }, 5000)
+  } catch (error) {
+    console.error('Error sending message:', error)
+  } finally {
+    isSubmitting.value = false
+  }
+}
+</script>
