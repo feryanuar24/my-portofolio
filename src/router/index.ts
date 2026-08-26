@@ -1,4 +1,5 @@
 import ContactPage from '@/pages/ContactPage.vue'
+import HelloPage from '@/pages/HelloPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import ProjectDetailPage from '@/pages/ProjectDetailPage.vue'
 import ProjectsPage from '@/pages/ProjectsPage.vue'
@@ -15,6 +16,7 @@ const router = createRouter({
     { path: '/about', name: 'About', component: AboutPage },
     { path: '/stack', name: 'Stack', component: StackPage },
     { path: '/contact', name: 'Contact', component: ContactPage },
+    { path: '/hello', name: 'Hello', component: HelloPage },
   ],
 })
 

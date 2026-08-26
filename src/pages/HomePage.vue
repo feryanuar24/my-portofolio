@@ -60,39 +60,11 @@
       <!-- HELLO: Bottom Right -->
       <h2
         class="pointer-events-auto absolute bottom-0 right-0 m-0 origin-bottom-right cursor-pointer p-8 font-anton text-8xl uppercase leading-none text-[#e0e0e0] transition-all duration-500 ease-out hover:scale-105 hover:text-transparent hover:[-webkit-text-stroke:2px_#e0e0e0]"
-        @click="openModal('HELLO')"
+        @click="goToHello"
       >
         HELLO
       </h2>
     </nav>
-
-    <!-- Transisi Modal Fullscreen -->
-    <transition name="slide-up">
-      <div
-        v-if="activeModal"
-        class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a0a0a]/95 backdrop-blur-md text-[#e0e0e0]"
-      >
-        <!-- Tombol Close -->
-        <button
-          class="absolute right-10 top-10 bg-transparent text-2xl font-bold cursor-pointer transition-opacity duration-300 hover:opacity-50"
-          @click="closeModal"
-        >
-          CLOSE [X]
-        </button>
-
-        <!-- Konten Modal -->
-        <div class="text-center">
-          <h2
-            class="mb-5 font-anton text-[8rem] tracking-[5px] text-transparent [-webkit-text-stroke:2px_#e0e0e0]"
-          >
-            {{ activeModal }}
-          </h2>
-          <p class="text-xl">
-            Konten detail untuk kategori {{ activeModal }} akan dirender di sini.
-          </p>
-        </div>
-      </div>
-    </transition>
   </div>
 </template>
 
@@ -104,20 +76,11 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const activeModal = ref<string | null>(null)
 const displayText = ref(likesArray[0])
 
 let mainIntervalId: ReturnType<typeof setInterval> | null = null
 let scrambleIntervalId: ReturnType<typeof setInterval> | null = null
 const randomCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+'
-
-const openModal = (section: string) => {
-  activeModal.value = section
-}
-
-const closeModal = () => {
-  activeModal.value = null
-}
 
 const goToWork = () => {
   router.push({ name: 'Projects' })
@@ -129,6 +92,10 @@ const goToWho = () => {
 
 const goToStack = () => {
   router.push({ name: 'Stack' })
+}
+
+const goToHello = () => {
+  router.push({ name: 'Hello' })
 }
 
 const scrambleText = (newText: string) => {
@@ -175,17 +142,4 @@ onUnmounted(() => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;700;800&display=swap');
-
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.slide-up-enter-from {
-  opacity: 0;
-  transform: translateY(100%);
-}
-.slide-up-leave-to {
-  opacity: 0;
-  transform: translateY(-100%);
-}
 </style>
