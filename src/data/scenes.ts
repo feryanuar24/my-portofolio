@@ -17,7 +17,7 @@ const scenes = [
     {
       label: 'Summary',
       value:
-        'Software Engineer focused on Fullstack Web Development. Crafting robust logic and interface into seamless digital experiences.',
+        'AI-Driven, Engineering-Backed: Integrating ML/DL and GenAI, fully supported by DevOps & MLOps infrastructure (Docker, CI/CD).',
       kanji: '概要',
       position: 'bottom-[20%] left-[10%] md:left-[15%]',
       widthClass: 'max-w-xl text-balance leading-relaxed',
@@ -27,22 +27,22 @@ const scenes = [
   [
     {
       label: 'Experience',
-      value: 'Software Engineer — PT Nutech Integrasi',
+      value: 'Software Engineer — Diskominfo Karawang',
       kanji: '職歴',
       position: 'top-[20%] right-[10%] text-right',
       delay: '0.5s',
     },
     {
       label: 'Experience',
-      value: 'Web & Server Migration — Student Press',
+      value: 'Frontend Engineer — PDDikti',
       kanji: '職歴',
       position: 'bottom-[35%] right-[15%] text-right',
       delay: '2.0s',
     },
     {
-      label: 'Tech Stack',
-      value: 'PHP, JS, C# (.NET), MySQL, DevOps',
-      kanji: '技術',
+      label: 'Experience',
+      value: 'Digital Media & IT Specialist — Student Pers Organization',
+      kanji: '職歴',
       position: 'top-[40%] left-[10%]',
       delay: '3.5s',
     },
@@ -50,22 +50,23 @@ const scenes = [
   [
     {
       label: 'Education',
-      value: 'B.Sc. in Computer Science (Your University)',
+      value: 'B.Sc. in Computer Science (University of Singaperbangsa Karawang)',
       kanji: '教育',
       position: 'top-[25%] left-[15%]',
       delay: '0.5s',
     },
     {
       label: 'Certification',
-      value: 'Professional Backend / Frontend Cert.',
+      value: 'Web, Multi-Platform, Backend, AI, Cloud, DevOps, and MLOps',
       kanji: '証明書',
       position: 'bottom-[40%] left-[20%]',
       delay: '2.0s',
     },
     {
-      label: 'Leisure & Habits',
-      value: 'Physical Books Collector, Long-Distance Running',
-      kanji: '習慣',
+      label: 'Additional Info',
+      value:
+        "I don't just write code for today; I build infrastructure that you won't need to tear down and rebuild next year.",
+      kanji: '追加情報',
       position: 'bottom-[20%] right-[10%] text-right',
       delay: '3.5s',
     },
@@ -73,28 +74,28 @@ const scenes = [
   [
     {
       label: 'Email Address',
-      value: 'feryanuar@example.com',
+      value: 'feryanuar24@gmail.com',
       kanji: 'メール',
       position: 'top-[30%] left-[15%]',
       delay: '0.5s',
     },
     {
       label: 'WhatsApp / Phone',
-      value: '+62 812 3456 7890',
+      value: '+62 838 1347 9771',
       kanji: '電話番号',
       position: 'bottom-[30%] right-[15%] text-right',
       delay: '1.5s',
     },
     {
       label: 'LinkedIn',
-      value: 'linkedin.com/in/feryanuar',
+      value: 'linkedin.com/in/fery-anuar',
       kanji: 'リンクドイン',
       position: 'top-[55%] left-[25%]',
       delay: '2.5s',
     },
     {
       label: 'GitHub',
-      value: 'github.com/feryanuar',
+      value: 'github.com/feryanuar24',
       kanji: 'ギットハブ',
       position: 'bottom-[15%] left-[35%]',
       delay: '3.5s',

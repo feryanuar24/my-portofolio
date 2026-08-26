@@ -52,7 +52,7 @@
       <!-- STACK: Bottom Left -->
       <h2
         class="pointer-events-auto absolute bottom-0 left-0 m-0 origin-bottom-left cursor-pointer p-8 font-anton text-8xl uppercase leading-none text-[#e0e0e0] transition-all duration-500 ease-out hover:scale-105 hover:text-transparent hover:[-webkit-text-stroke:2px_#e0e0e0]"
-        @click="openModal('STACK')"
+        @click="goToStack"
       >
         STACK
       </h2>
@@ -125,6 +125,10 @@ const goToWork = () => {
 
 const goToWho = () => {
   router.push({ name: 'About' })
+}
+
+const goToStack = () => {
+  router.push({ name: 'Stack' })
 }
 
 const scrambleText = (newText: string) => {
