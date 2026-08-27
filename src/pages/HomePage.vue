@@ -3,9 +3,9 @@
   <div class="relative h-screen w-screen overflow-hidden bg-[#0a0a0a] font-syne text-[#e0e0e0]">
     <!-- Komponen 3D Wajah Anda di Tengah -->
     <div
-      class="pointer-events-none absolute left-1/2 top-1/2 z-0 h-screen w-screen -translate-x-1/2 -translate-y-1/2"
+      class="pointer-events-none absolute left-1/2 top-1/2 z-20 h-[88vh] w-[88vw] -translate-x-1/2 -translate-y-1/2"
     >
-      <!-- <FaceComponenet /> -->
+      <FaceComponent :zoom="0.86" />
     </div>
 
     <!-- Logo / Nama Kecil -->
@@ -72,7 +72,7 @@
 import likesArray from '@/data/likes'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-// import FaceComponenet from '../components/FaceComponent.vue'
+import FaceComponent from '../components/FaceComponent.vue'
 
 const router = useRouter()
 

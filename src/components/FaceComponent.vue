@@ -42,6 +42,7 @@ let targetPitch = 0
 let currentYaw = 0
 let currentPitch = 0
 let baseYaw = 0
+let lastPointerTime = 0
 
 function degToRad(d: number) {
   return (d * Math.PI) / 180
@@ -87,14 +88,22 @@ function updateTargetFromPointer(clientX: number, clientY: number) {
     nx = (clientX / window.innerWidth) * 2 - 1
     ny = (clientY / window.innerHeight) * 2 - 1
   }
-  nx = THREE.MathUtils.clamp(nx, -1, 1) * (props.invertYaw ? -1 : 1)
-  ny = THREE.MathUtils.clamp(ny, -1, 1) * (props.invertPitch ? -1 : 1)
+  const deadZone = 0.08
+  const shape = (value: number) => {
+    const direction = Math.sign(value)
+    const magnitude = THREE.MathUtils.clamp((Math.abs(value) - deadZone) / (1 - deadZone), 0, 1)
+    return direction * magnitude * magnitude * (3 - 2 * magnitude)
+  }
+
+  nx = shape(THREE.MathUtils.clamp(nx, -1, 1)) * (props.invertYaw ? -1 : 1)
+  ny = shape(THREE.MathUtils.clamp(ny, -1, 1)) * (props.invertPitch ? -1 : 1)
 
   targetYaw = nx * degToRad(props.maxYaw)
-  targetPitch = -ny * degToRad(props.maxPitch)
+  targetPitch = ny * degToRad(props.maxPitch)
 }
 
 function onPointerMove(e: PointerEvent) {
+  lastPointerTime = performance.now()
   updateTargetFromPointer(e.clientX, e.clientY)
 }
 
@@ -186,8 +195,10 @@ function handleResize() {
 function animate() {
   animationId = requestAnimationFrame(animate)
 
-  currentYaw += (targetYaw - currentYaw) * props.smoothing
-  currentPitch += (targetPitch - currentPitch) * props.smoothing
+  const timeSincePointerMove = performance.now() - lastPointerTime
+  const smoothing = timeSincePointerMove > 1200 ? props.smoothing * 0.65 : props.smoothing
+  currentYaw += (targetYaw - currentYaw) * smoothing
+  currentPitch += (targetPitch - currentPitch) * smoothing
 
   if (headBone) {
     headBone.rotation.y = currentYaw * 0.7
