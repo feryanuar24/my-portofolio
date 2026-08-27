@@ -11,11 +11,18 @@
 
     <!-- 3D Scene Wrapper -->
     <!-- perspective-[1000px] adalah kunci utama agar elemen di dalamnya memiliki efek kedalaman 3D ruang -->
-    <div class="carousel-scene relative flex h-full w-full items-center justify-center">
+    <div
+      class="carousel-scene relative flex h-full w-full cursor-grab items-center justify-center touch-none active:cursor-grabbing"
+      @pointerdown="startDragging"
+      @pointermove="dragCarousel"
+      @pointerup="stopDragging"
+      @pointercancel="stopDragging"
+    >
       <!-- Poros Putar (Carousel Track) -->
       <!-- rotate-x-[-10deg] membuat cincin miring sedikit agar kedalamannya terlihat dari atas -->
       <div
         class="carousel-track relative flex h-44 w-72 items-center justify-center transform-3d [-webkit-transform-style:preserve-3d]"
+        :style="trackStyle"
       >
         <!-- Daftar Tech Stack Anda -->
         <div
@@ -40,13 +47,13 @@
 
     <!-- Instruksi Interaksi -->
     <p class="absolute bottom-10 animate-pulse text-xs tracking-[0.2em] text-white/30">
-      [ HOVER TO INSPECT SYSTEM ]
+      [ HOLD AND SWIPE TO ROTATE ]
     </p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed, onUnmounted, ref } from 'vue'
 
 const techStack = ref([
   { name: 'Laravel/CI', category: 'Fullstack' },
@@ -64,6 +71,70 @@ const techStack = ref([
   { name: 'DevOps/MLOps/Cloud', category: 'Infrastructure' },
 ])
 
+const rotation = ref(0)
+const isDragging = ref(false)
+let lastPointerX = 0
+let lastPointerTime = 0
+let rotationVelocity = 0
+let momentumFrame: number | undefined
+
+const trackStyle = computed(() => ({
+  transform: `rotateX(-10deg) rotateY(${rotation.value}deg)`,
+}))
+
+const stopMomentum = () => {
+  if (momentumFrame !== undefined) {
+    cancelAnimationFrame(momentumFrame)
+    momentumFrame = undefined
+  }
+}
+
+const applyMomentum = () => {
+  rotation.value += rotationVelocity
+  rotationVelocity *= 0.95
+
+  if (Math.abs(rotationVelocity) > 0.01) {
+    momentumFrame = requestAnimationFrame(applyMomentum)
+  } else {
+    rotationVelocity = 0
+    momentumFrame = undefined
+  }
+}
+
+const startDragging = (event: PointerEvent) => {
+  stopMomentum()
+  isDragging.value = true
+  lastPointerX = event.clientX
+  lastPointerTime = event.timeStamp
+  rotationVelocity = 0
+  ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
+}
+
+const dragCarousel = (event: PointerEvent) => {
+  if (!isDragging.value) return
+
+  const elapsed = Math.max(event.timeStamp - lastPointerTime, 1)
+  const distance = event.clientX - lastPointerX
+  rotation.value += distance * 0.35
+  rotationVelocity = (distance * 0.35) / elapsed
+  lastPointerX = event.clientX
+  lastPointerTime = event.timeStamp
+}
+
+const stopDragging = (event: PointerEvent) => {
+  if (!isDragging.value) return
+
+  isDragging.value = false
+  const target = event.currentTarget as HTMLElement
+  if (target.hasPointerCapture(event.pointerId)) {
+    target.releasePointerCapture(event.pointerId)
+  }
+  stopMomentum()
+  momentumFrame = requestAnimationFrame(applyMomentum)
+}
+
+onUnmounted(stopMomentum)
+
 const getCardStyle = (index: number) => {
   const totalItems = techStack.value.length
   const angle = (360 / totalItems) * index
@@ -75,30 +146,12 @@ const getCardStyle = (index: number) => {
 </script>
 
 <style scoped>
-/* CSS murni untuk animasi berputar terus-menerus */
-
-@keyframes spin-carousel {
-  0% {
-    transform: rotateX(-10deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotateX(-10deg) rotateY(360deg);
-  }
-}
-
 .carousel-track {
   --carousel-radius: 620px;
-  /* Putaran penuh dalam 25 detik */
-  animation: spin-carousel 25s infinite linear;
 }
 
 .carousel-scene {
   perspective: 1000px;
-}
-
-/* Pause animasi saat user menyorot cincin agar bisa dibaca */
-.carousel-track:hover {
-  animation-play-state: paused;
 }
 
 /* Memastikan child dari elemen 3D juga di-render secara 3D */
